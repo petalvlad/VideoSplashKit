@@ -18,6 +18,7 @@ public enum ScalingMode {
 
 public protocol VideoSplashViewControllerDelegate: class {
     func videoDidReachEnd()
+    func videoReadyToPlay()
 }
 
 public class VideoSplashViewController: UIViewController {
@@ -150,7 +151,9 @@ public class VideoSplashViewController: UIViewController {
     }
     
     // Override in subclass
-    public func movieReadyToPlay() { }
+    public func movieReadyToPlay() {
+        delegate?.videoReadyToPlay()
+    }
     
     override public func viewDidLoad() {
         super.viewDidLoad()
